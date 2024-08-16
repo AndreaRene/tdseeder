@@ -1,33 +1,25 @@
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../../.env') });
-
+require('dotenv').config();
 const mongoose = require('mongoose');
 
 // Verify that environment variables are set
-console.log('TDUD_01_URI:', process.env.TDUD_01_URI);
-console.log('TDSD_01_URI:', process.env.TDSD_01_URI);
-
-if (!process.env.TDUD_01_URI || !process.env.TDSD_01_URI) {
-    throw new Error('Environment variables TDUD_01_URI and TDSD_01_URI must be set');
+if (!process.env.TDSD_01_URI) {
+  throw new Error('Environment variable TDSD_01_URI must be set');
 }
 
-// Connect to the user-related database
-const dynamicDB = mongoose.createConnection(process.env.TDUD_01_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+// Log the URI being used (for debugging purposes)
+console.log('Connecting to TDSD_01_URI:', process.env.TDSD_01_URI);
 
-// Connect to the content-related database
+// Connect to the static data database
 const staticDB = mongoose.createConnection(process.env.TDSD_01_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-// Pass the specific connection to each model
-const User = require('../models/User')(dynamicDB);
+// Import and initialize models with the specific connection
 const Deck = require('../models/Deck')(staticDB);
 const Card = require('../models/Card')(staticDB);
 const Spread = require('../models/Spread')(staticDB);
-const Reading = require('../models/Reading')(dynamicDB);
+const Avatar = require('../models/Avatar')(staticDB);
 
-module.exports = { dynamicDB, staticDB, User, Deck, Card, Spread, Reading };
+// Export the connection and models for use in other parts of the application
+module.exports = { staticDB, Deck, Card, Spread, Avatar };

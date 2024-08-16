@@ -1,6 +1,8 @@
-const Card = require('./Card');
-const Deck = require('./Deck');
-const Spread = require('./Spread');
-const Avatar = require('./Avatar');
-
-module.exports = { Card, Deck, Spread, Avatar };
+module.exports = (connection) => {
+  return {
+    Card: require('./Card')(connection),
+    Deck: require('./Deck')(connection),
+    Spread: require('./Spread')(connection),
+    Avatar: require('./Avatar')(connection),
+  };
+};

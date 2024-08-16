@@ -4,7 +4,7 @@
   "description": "Seeder files for tarotdeck",
   "main": "scripts/seed.js",
   "scripts": {
-    "test": "test"
+    "seed": "node scripts/seed.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/AndreaRene/tdseeder#readme",
   "dependencies": {
+    "aws4": "^1.13.1",
     "dotenv": "^16.4.5",
     "mongoose": "^8.5.3"
   }
