@@ -1,0 +1,27 @@
+{
+  "name": "tdseed",
+  "version": "1.0.0",
+  "description": "Seeder files for tarotdeck",
+  "main": "scripts/seed.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AndreaRene/tdseeder.git"
+  },
+  "keywords": [
+    "seeding",
+    "database"
+  ],
+  "author": "AndreaRene",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreaRene/tdseeder/issues"
+  },
+  "homepage": "https://github.com/AndreaRene/tdseeder#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.5.3"
+  }
+}
